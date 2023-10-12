@@ -1,0 +1,26 @@
+body {
+  --standart-bg-color: #F8F9FA;
+
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--standart-bg-color);
+}
+
+h1 {
+  font-weight: 700;
+}
+
+label {
+  font-weight: 500;
+}
+
+.card-action .btn {
+  color: var(--bs-light-text-emphasis);
+}
+
+.card-action .btn.trash:hover {
+  color: var(--bs-danger);
+}
+
+.card-action .btn.archive:hover {
+  color: var(--bs-secondary-color);
+}
