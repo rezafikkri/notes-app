@@ -12,7 +12,7 @@ export default class NoteForm extends React.Component {
       body: ''
     };
   
-    // bind handle method
+    // bind event handle method
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,13 +33,31 @@ export default class NoteForm extends React.Component {
     });
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
+
+    this.props.onAddNote({
+      id: +new Date(),
+      title: this.state.title,
+      body: this.state.body,
+      archived: false,
+      createdAt: (new Date()).toISOString(),
+    });
+    
+    // reset form
+    this.setState({
+      title: '',
+      body: ''
+    });
   }
 
   render() {
+    console.log('render');
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="form-text mb-1 text-end">Sisa karakter: {this.titleCharacterLimit - this.state.title.length}</div>
+        <div className="form-text mb-1 text-end">
+          Sisa karakter: {this.titleCharacterLimit - this.state.title.length}
+        </div>
         <div className="form-floating mb-2">
           <input
             type="text"
@@ -59,12 +77,12 @@ export default class NoteForm extends React.Component {
             id="note"
             style={{height: '100px'}}
             onChange={this.handleBodyChange}
-            defaultValue={this.state.body}
+            value={this.state.body}
           ></textarea>
           <label htmlFor="note">Isi</label>
         </div>
 
-        <button type="button" className="btn btn-primary w-100 text-center">Buat</button>
+        <button type="submit" className="btn btn-primary w-100 text-center">Buat</button>
       </form>
     );
   }

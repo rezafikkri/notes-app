@@ -11,10 +11,22 @@ export default class NoteApp extends React.Component {
     this.state = {
       notes: getInitialData()
     };
+
+    // bind event handle method
+    this.handleAddNote = this.handleAddNote.bind(this);
   }
 
   filterNotes(notes, archived=false) {
     return notes.filter(note => note.archived === archived);
+  }
+
+  handleAddNote(newNote) {
+    this.setState(prevState => ({
+      notes: [
+        ...prevState.notes,
+        newNote
+      ]
+    }));
   }
 
   render() {
@@ -25,7 +37,7 @@ export default class NoteApp extends React.Component {
           <div className="row justify-content-center note-create">
             <div className="col-lg-5">
               <h1 className="fs-3 mb-2 text-secondary-emphasis">Buat Catatan</h1>
-              <NoteForm />
+              <NoteForm onAddNote={this.handleAddNote} />
             </div>
 
             <div className="col-lg-10">
