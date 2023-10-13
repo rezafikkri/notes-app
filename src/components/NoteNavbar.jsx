@@ -1,5 +1,4 @@
 import NavbarBrand from "./NavbarBrand";
-import NavbarToggler from "./NavbarToggler";
 import NoteSearch from "./NoteSearch";
 
 export default function NoteNavbar() {
@@ -7,10 +6,7 @@ export default function NoteNavbar() {
     <nav className="navbar navbar-expand-lg bg-body-tertiary mb-5">
       <div className="container">
         <NavbarBrand />
-        <NavbarToggler />
-        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <NoteSearch />
-        </div>
+        <NoteSearch />
       </div>
     </nav>
   );
