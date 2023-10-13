@@ -22,5 +22,5 @@ label {
 }
 
 .card-action .btn.archive:hover {
-  color: var(--bs-secondary-color);
+  color: var(--bs-warning);
 }

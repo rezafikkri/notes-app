@@ -13,6 +13,10 @@ export default class NoteApp extends React.Component {
     };
   }
 
+  filterNotes(notes, archived=false) {
+    return notes.filter(note => note.archived === archived);
+  }
+
   render() {
     return (
       <>
@@ -26,7 +30,10 @@ export default class NoteApp extends React.Component {
 
             <div className="col-lg-10">
               <h1 className="fs-4 mt-5 mb-2 text-secondary-emphasis">Catatan Aktif</h1>
-              <NoteList notes={this.state.notes} />
+              <NoteList notes={this.filterNotes(this.state.notes)} />
+
+              <h1 className="fs-4 mt-5 mb-2 text-secondary-emphasis">Arsip</h1>
+              <NoteList notes={this.filterNotes(this.state.notes, true)} />
             </div>
           </div>
         </div>
