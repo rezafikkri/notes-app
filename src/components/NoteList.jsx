@@ -3,9 +3,9 @@ import NoteItem from "./NoteItem";
 export default function NoteList({ notes }) {
   if (notes.length > 0) {
     return (
-      <div className="row">
+      <div className="row align-items-stretch">
         {notes.map(note => (
-          <div className="col-lg-4" key={note.id}>
+          <div className="col-lg-4 mb-3" key={note.id}>
             <NoteItem {...note} />
           </div>
         ))}
