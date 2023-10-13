@@ -52,7 +52,6 @@ export default class NoteForm extends React.Component {
   }
 
   render() {
-    console.log('render');
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-text mb-1 text-end">

@@ -14,6 +14,7 @@ export default class NoteApp extends React.Component {
 
     // bind event handle method
     this.handleAddNote = this.handleAddNote.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   filterNotes(notes, archived=false) {
@@ -26,6 +27,14 @@ export default class NoteApp extends React.Component {
         ...prevState.notes,
         newNote
       ]
+    }));
+  }
+
+  handleDelete(e, id) {
+    e.preventDefault();
+
+    this.setState(prevState => ({
+      notes: prevState.notes.filter(note => note.id !== id)
     }));
   }
 
@@ -42,10 +51,10 @@ export default class NoteApp extends React.Component {
 
             <div className="col-lg-10">
               <h1 className="fs-4 mt-5 mb-2 text-secondary-emphasis">Catatan Aktif</h1>
-              <NoteList notes={this.filterNotes(this.state.notes)} />
+              <NoteList notes={this.filterNotes(this.state.notes)} onDelete={this.handleDelete} />
 
               <h1 className="fs-4 mt-5 mb-2 text-secondary-emphasis">Arsip</h1>
-              <NoteList notes={this.filterNotes(this.state.notes, true)} />
+              <NoteList notes={this.filterNotes(this.state.notes, true)} onDelete={this.handleDelete} />
             </div>
           </div>
         </div>
