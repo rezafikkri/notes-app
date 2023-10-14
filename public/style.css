@@ -17,11 +17,11 @@ label {
   color: var(--bs-light-text-emphasis);
 }
 
-.card-action .btn.trash:hover {
+.card-action .btn.danger:hover {
   color: var(--bs-danger);
 }
 
-.card-action .btn.archive:hover {
+.card-action .btn.warning:hover {
   color: var(--bs-warning);
 }
 
