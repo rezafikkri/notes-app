@@ -10,17 +10,28 @@ export default class NoteApp extends React.Component {
     super(props);
 
     this.state = {
-      notes: getInitialData()
+      notes: getInitialData(),
+      keyword: ''
     };
 
     // bind event handle method
     this.handleAddNote = this.handleAddNote.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleArchive = this.handleArchive.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   filterNotes(notes, archived=false) {
-    return notes.filter(note => note.archived === archived);
+    if (this.state.keyword === '') {
+      return notes.filter(note => note.archived === archived);
+    }
+    return notes.filter(note => 
+      note.title.toLowerCase().includes(this.state.keyword.toLowerCase()) && note.archived === archived
+    );
+  }
+
+  handleSearch(e) {
+    this.setState({ keyword: e.target.value });
   }
 
   handleAddNote(newNote) {
@@ -56,7 +67,7 @@ export default class NoteApp extends React.Component {
   render() {
     return (
       <>
-        <NoteNavbar />
+        <NoteNavbar onSearch={this.handleSearch} />
         <div className="container">
           <div className="row justify-content-center note-create">
             <div className="col-lg-5">
