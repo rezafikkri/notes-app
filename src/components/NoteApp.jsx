@@ -38,6 +38,19 @@ export default class NoteApp extends React.Component {
     }));
   }
 
+  handleArchive(e, id) {
+    e.preventDefault();
+
+    this.setState(prevState => ({
+      notes: prevState.notes.map(note => {
+        if (note.id === id) {
+          return { ...note, archived: true };
+        }
+        return note;
+      })
+    }));
+  }
+
   render() {
     return (
       <>
@@ -51,7 +64,8 @@ export default class NoteApp extends React.Component {
 
             <div className="col-lg-10">
               <h1 className="fs-4 mt-5 mb-2 text-secondary-emphasis">Catatan Aktif</h1>
-              <NoteList notes={this.filterNotes(this.state.notes)} onDelete={this.handleDelete} />
+              <NoteList
+                notes={this.filterNotes(this.state.notes)} onDelete={this.handleDelete} on />
 
               <h1 className="fs-4 mt-5 mb-2 text-secondary-emphasis">Arsip</h1>
               <NoteList notes={this.filterNotes(this.state.notes, true)} onDelete={this.handleDelete} />
