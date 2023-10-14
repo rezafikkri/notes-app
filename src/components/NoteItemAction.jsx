@@ -1,13 +1,14 @@
 import Icon from '@mdi/react';
 import { mdiArchiveArrowDown, mdiArchiveArrowUp, mdiDelete } from '@mdi/js';
 
-export default function NoteItemAction({ id, archived, onDelete }) {
+export default function NoteItemAction({ id, archived, onDelete, onArchive }) {
   return (
     <div className="card-action p-2">
       <a
         href="#"
         className="btn btn-sm trash"
-        onClick={(e) => onDelete(e, id)} title="Hapus catatan"
+        title="Hapus catatan"
+        onClick={(e) => onDelete(e, id)}
       >
         <Icon path={mdiDelete} size={0.7} />
       </a>
@@ -15,6 +16,7 @@ export default function NoteItemAction({ id, archived, onDelete }) {
         href="#"
         className="btn btn-sm archive"
         title={archived ? 'Pulihkan catatan' : 'Pindahkan catatan ke arsip'}
+        onClick={(e) => onArchive(e, id)}
       >
         {archived ? (
           <Icon path={mdiArchiveArrowUp} size={0.7} />
