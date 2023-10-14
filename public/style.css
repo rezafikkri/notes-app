@@ -24,3 +24,7 @@ label {
 .card-action .btn.archive:hover {
   color: var(--bs-warning);
 }
+
+footer {
+  font-size: .8rem;
+}

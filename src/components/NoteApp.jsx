@@ -3,6 +3,7 @@ import NoteNavbar from "./NoteNavbar";
 import NoteForm from "./NoteForm";
 import { getInitialData } from "../utils";
 import NoteList from "./NoteList";
+import NoteFooter from "./NoteFooter";
 
 export default class NoteApp extends React.Component {
   constructor(props) {
@@ -80,6 +81,7 @@ export default class NoteApp extends React.Component {
             </div>
           </div>
         </div>
+        <NoteFooter />
       </>
     );
   }
