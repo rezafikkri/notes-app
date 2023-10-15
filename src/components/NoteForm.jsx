@@ -22,6 +22,8 @@ export default class NoteForm extends React.Component {
     let newTitleChrRemaining = titleLimit - newTitle.length;
 
     if (newTitleChrRemaining <= 0) {
+      /* using substring is useful when the user paste a title more than 50 characters,
+      then still enter the first 50 characters into the input */
       newTitle = newTitle.substring(0, titleLimit);
       newTitleChrRemaining = 0;
     }
