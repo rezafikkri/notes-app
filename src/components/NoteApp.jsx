@@ -57,7 +57,7 @@ export default class NoteApp extends React.Component {
   render() {
     return (
       <>
-        <NoteNavbar onSearch={this.handleSearch} />
+        <NoteNavbar keyword={this.state.keyword} onSearch={this.handleSearch} />
         <NoteMain
           notes={this.state.notes}
           keyword={this.state.keyword}

@@ -1,15 +1,13 @@
 import React from "react";
 
 export default class NoteForm extends React.Component {
-  // title character limit
-  titleCharacterLimit = 50;
-
   constructor(props) {
     super(props);
 
     this.state = {
       title: '',
-      body: ''
+      body: '',
+      titleChrRemaining: 50
     };
   
     // bind event handle method
@@ -19,12 +17,17 @@ export default class NoteForm extends React.Component {
   }
 
   handleTitleChange(e) {
-    let title = e.target.value;
-    if (title.length > this.titleCharacterLimit) {
-      title = title.substring(0, 50);
+    const titleLimit = 50;
+    let newTitle = e.target.value;
+    let newTitleChrRemaining = titleLimit - newTitle.length;
+
+    if (newTitleChrRemaining <= 0) {
+      newTitle = newTitle.substring(0, titleLimit);
+      newTitleChrRemaining = 0;
     }
 
-    this.setState({ title });
+    this.setState({ titleChrRemaining: newTitleChrRemaining });
+    this.setState({ title: newTitle });
   }
 
   handleBodyChange(e) {
@@ -55,7 +58,7 @@ export default class NoteForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-text mb-1 text-end">
-          Sisa karakter: {this.titleCharacterLimit - this.state.title.length}
+          Sisa karakter: {this.state.titleChrRemaining}
         </div>
         <div className="form-floating mb-2">
           <input
