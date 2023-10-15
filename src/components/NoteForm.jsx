@@ -70,6 +70,7 @@ export default class NoteForm extends React.Component {
             placeholder="Judul catatan"
             value={this.state.title}
             onChange={this.handleTitleChange}
+            required
           />
           <label htmlFor="title">Judul</label>
         </div>
@@ -82,6 +83,7 @@ export default class NoteForm extends React.Component {
             style={{height: '100px'}}
             onChange={this.handleBodyChange}
             value={this.state.body}
+            required
           ></textarea>
           <label htmlFor="note">Isi</label>
         </div>
